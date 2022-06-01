@@ -1,3 +1,5 @@
+
+
 import numpy as np
 import os
 import SimpleITK as sitk
@@ -113,8 +115,8 @@ class LITS_preprocess:
         f.close()
 
 if __name__ == '__main__':
-    raw_dataset_path = '/ssd/lzq/dataset/LiTS/train'
-    fixed_dataset_path = '/ssd/lzq/dataset/fixed_lits'
+    raw_dataset_path = './raw_dataset/train/'
+    fixed_dataset_path = './fixed_data/'
 
     args = config.args 
     tool = LITS_preprocess(raw_dataset_path,fixed_dataset_path, args)

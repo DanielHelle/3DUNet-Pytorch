@@ -162,6 +162,9 @@ class ResUNet(nn.Module):
 
     def forward(self, inputs):
 
+        print("input")
+        print(str(inputs.size()))
+
         long_range1 = self.encoder_stage1(inputs) + inputs
 
         short_range1 = self.down_conv1(long_range1)
@@ -205,6 +208,16 @@ class ResUNet(nn.Module):
         outputs = self.decoder_stage4(torch.cat([short_range8, long_range1], dim=1)) + short_range8
 
         output4 = self.map4(outputs)
+
+        print("output1:")
+        print(str(output1.size()))
+        print("output2")
+        print(str(output2.size()))
+        print("output3")
+        print(str(output3.size()))
+        print("output4")
+        print(str(output4.size()))
+
 
         if self.training is True:
             return output1, output2, output3, output4

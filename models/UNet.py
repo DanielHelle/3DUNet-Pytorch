@@ -46,6 +46,7 @@ class UNet(nn.Module):
         )
 
     def forward(self, x):
+        print("THIS IS INPUT SIZE: " + str(x.size()))
 
         out = F.relu(F.max_pool3d(self.encoder1(x),2,2))
         t1 = out
