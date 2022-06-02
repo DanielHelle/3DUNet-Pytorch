@@ -73,6 +73,14 @@ class UNet(nn.Module):
         
         out = F.relu(F.interpolate(self.decoder5(out),scale_factor=(2,2,2),mode ='trilinear'))
         output4 = self.map4(out)
+        print("output1:")
+        print(str(output1.size()))
+        print("output2")
+        print(str(output2.size()))
+        print("output3")
+        print(str(output3.size()))
+        print("output4")
+        print(str(output4.size()))
         # print(out.shape)
         # print(output1.shape,output2.shape,output3.shape,output4.shape)
         if self.training is True:

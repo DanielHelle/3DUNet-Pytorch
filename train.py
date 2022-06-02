@@ -65,13 +65,13 @@ if __name__ == '__main__':
     args = config.args
     save_path = os.path.join('./experiments', args.save)
     if not os.path.exists(save_path): os.mkdir(save_path)
-    device = torch.device('cpu' if args.cpu else 'cuda')
+    device = torch.device('cpu' if args.cpu else 'cpu')
     # data info
     train_loader = DataLoader(dataset=Train_Dataset(args),batch_size=args.batch_size,num_workers=args.n_threads, shuffle=True)
     val_loader = DataLoader(dataset=Val_Dataset(args),batch_size=1,num_workers=args.n_threads, shuffle=False)
 
     # model info
-    model = ResUNet(in_channel=1, out_channel=args.n_labels,training=True).to(device)
+    model = UNet(in_channel=1, out_channel=args.n_labels,training=True).to(device)
 
     model.apply(weights_init.init_model)
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
